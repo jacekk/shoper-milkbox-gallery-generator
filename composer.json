@@ -1,0 +1,12 @@
+{
+    "name": "jacekk/shoper-milkbox-gallery-generator",
+    "authors": [
+        {
+            "name": "JacekK",
+            "email": "jacekk@example.com"
+        }
+    ],
+    "require": {
+    	"zocim/php-thumb": "2.0.*@dev"
+    }
+}
