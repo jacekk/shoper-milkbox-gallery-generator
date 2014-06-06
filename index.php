@@ -1,8 +1,9 @@
 <?php
 
-define('GENERATE', true);
+define('PROCESS_FILES', true);
 define('DIR', './galleries/first/');
 define('THUMB_SIZE', 128);
+define('BIG_MAX_HEI', 1000);
 define('BIG_MAX_WID', 1600);
 define('BASE_URL', 'http://example.com/galleries/');
 
@@ -29,8 +30,10 @@ if (is_array($images)) {
     foreach ($images as $item) {
         $fileName = basename($item);
         $fileName = strtolower($fileName);
-        if (GENERATE) {
+        if (PROCESS_FILES) {
             $thumb = new PHPThumb\GD($item);
+            $thumb->resize(BIG_MAX_WID, BIG_MAX_HEI);
+            $thumb->save($bigDir.$fileName);
             $thumb->adaptiveResize(THUMB_SIZE, THUMB_SIZE);
             $thumb->save($thumbsDir.$fileName);
         }
